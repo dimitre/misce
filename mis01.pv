@@ -13,6 +13,15 @@ background(1)
 fill(.8,0,0)
 fill(0)
 fontSize = 120
+
+baseline = {
+    'a': +1, 
+    'e': -1,
+    'i': +1,
+    'o': -1,
+    'u': +1,
+}
+
 font(face="NONNaturalGrotesk_TrialVersion-Regular", size=fontSize)
 
 texto = "tempo\rcorrente"
@@ -22,30 +31,20 @@ texto = "repente da maresia\rescaldante"
 
 x = 40
 base = 440
-deslocamento = fontSize * .25
+deslocamento = fontSize * .35
 
 for letter in texto:
-    
-    #for path in p.contours:
-    #    drawpath(path)
-    #    stroke(random(0.5))
-
-    x = x + p.bounds.w + 3
-    if letter == ' ':
-        x += fontSize * .35
-    if letter == 'e':
-        base -= deslocamento
-    if letter == 'o':
-        base += deslocamento
-    if letter == 'a':
-        base += deslocamento
-    if letter == 'i':
-        base -= deslocamento
-
     p = textpath(letter, x, base)
     drawpath(p)
-
-
+    
+    x = x + p.bounds.w + 3
+    
+    lowerletter = letter.lower()
+    if lowerletter in baseline.keys():
+        base += deslocamento * baseline[lowerletter]
+    
+    if letter == ' ':
+        x += fontSize * .35
 
     if letter == "\r":
         base += deslocamento * 10
