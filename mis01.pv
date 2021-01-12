@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
 '''
 o sol com filtro RGB - hernani viana
 repente da maresia escaldante - nirez de carvalho
@@ -21,17 +24,25 @@ baseline = {
     'o': -1,
     'u': +1,
 }
+deslocamento = fontSize * .35
 
-font(face="NONNaturalGrotesk_TrialVersion-Regular", size=fontSize)
+font(face="NONNaturalGrotesk_TrialVersion-Bold", size=fontSize)
 
-texto = "tempo\rcorrente"
-texto = "repente da maresia\rescaldante"
-#texto = "o mar"
-#texto = "o sol com filtro RGB"
+textos = [
+    "supermemórias",
+    "tempo\rcorrente",
+    "o sol com filtro RGB",
+    "repente da maresia\rescaldante",
+    "o mar",
+]
+
+var("frase", NUMBER, 0.0, 0.0, 1.0)
+indice = int(frase*len(textos))
+print(indice)
+texto = textos[indice].decode('utf-8')
 
 x = 40
 base = 440
-deslocamento = fontSize * .35
 
 for letter in texto:
     p = textpath(letter, x, base)
@@ -47,5 +58,5 @@ for letter in texto:
         x += fontSize * .35
 
     if letter == "\r":
-        base += deslocamento * 10
+        base += deslocamento * 5
         x = 40
