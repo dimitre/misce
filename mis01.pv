@@ -1,0 +1,52 @@
+'''
+o sol com filtro RGB - hernani viana
+repente da maresia escaldante - nirez de carvalho
+supermemórias - danilo carvalho
+o mar - chico albuquerque
+'''
+
+
+w =1200
+size(w, w)
+background(1)
+
+fill(.8,0,0)
+fill(0)
+fontSize = 120
+font(face="NONNaturalGrotesk_TrialVersion-Regular", size=fontSize)
+
+texto = "tempo\rcorrente"
+texto = "repente da maresia\rescaldante"
+#texto = "o mar"
+#texto = "o sol com filtro RGB"
+
+x = 40
+base = 440
+deslocamento = fontSize * .25
+
+for letter in texto:
+    
+    #for path in p.contours:
+    #    drawpath(path)
+    #    stroke(random(0.5))
+
+    x = x + p.bounds.w + 3
+    if letter == ' ':
+        x += fontSize * .35
+    if letter == 'e':
+        base -= deslocamento
+    if letter == 'o':
+        base += deslocamento
+    if letter == 'a':
+        base += deslocamento
+    if letter == 'i':
+        base -= deslocamento
+
+    p = textpath(letter, x, base)
+    drawpath(p)
+
+
+
+    if letter == "\r":
+        base += deslocamento * 10
+        x = 40
