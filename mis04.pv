@@ -1,0 +1,71 @@
+size(1280, 600)
+background(1)
+
+width = 300
+offx = 0
+offy = HEIGHT * .5 - 50
+
+h = 100
+nostroke()
+
+
+
+fontsize = 140    
+font(face="NONNaturalGrotesk_TrialVersion-Bold", size=fontsize)
+
+fill(1,0,0)
+texto = 'MIS'
+
+
+path = textpath('MIS', 0,HEIGHT/2 + 50)
+#drawpath(path)
+
+offy = HEIGHT/2 + 50
+offx = 10
+
+var("sobe", NUMBER, 0.1, 0.01, 0.3)
+var("desce", NUMBER,  0.3, 0.01, 0.3)
+
+w = minwidth = 1
+for letter in texto:
+    
+    p = textpath(letter, offx, offy)
+    
+    if letter == 'I':
+        bounds = p.contours[0].bounds.w
+        
+        h = p.contours[0].bounds.h
+        print(h)
+        with (translate(0,-h)):
+            
+            while w < bounds:
+                #print (w, bounds)
+                rect(offx, offy, w, h)
+                #offx += w*2
+                offx += bounds * 1.2
+#                w = w*1.1
+                w = w*(1.0 + sobe)
+
+                
+            #fill(0,1,0)
+            while w > minwidth: 
+                rect(offx, offy, w, h)
+                #offx += w*2
+                offx += bounds * 1.2
+                #w = w*.8
+                w = w*(1.0 - desce)
+
+            
+        
+
+        #offx += 10
+    else:
+        drawpath(p)
+        
+        offx = offx + p.bounds.w + 20
+
+        
+    #print(p.bounds.w)
+    
+
+
