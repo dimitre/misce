@@ -4,7 +4,7 @@ def map(unscaled, from_min, from_max,to_min, to_max):
     return (to_max-to_min)*(unscaled-from_min)/(from_max-from_min)+to_min
 
 translate(WIDTH*.5, HEIGHT * .5)
-for a in range (0,360,8):
+for a in range (0,360,9):
     w = map(a, 0, 360, 20, 2)
     push()
     rotate(-a + 90)

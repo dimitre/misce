@@ -1,0 +1,32 @@
+size(900, 1200)
+
+corlist = (
+    '#818485',
+    '#1a1a1a',
+    '#ff0000',
+    '#ffffff',
+)
+
+cores = []
+for c in corlist:
+    for c2 in corlist:
+        if c != c2:
+            cores.append((c, c2))
+
+var("paleta", NUMBER, 0, 0, len(cores))
+background(cores[int(paleta)][0])
+stroke(cores[int(paleta)][0])
+fill(cores[int(paleta)][1])
+
+strokewidth(3)
+
+raio = 60
+jump = 150
+
+x = random(raio*.5, WIDTH-raio*.5)
+y = random(raio*.5, HEIGHT-raio*.5)
+
+for a in range(0,100):
+    x += random(-jump, jump)
+    y += random(-jump, jump)
+    oval(x, y, raio,raio)

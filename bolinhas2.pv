@@ -1,0 +1,47 @@
+size(900, 1200)
+import math
+
+def r2x (a, m):
+	x = m * math.cos((a))
+	return x
+	
+def r2y (a, m):
+	y = m * math.sin((a))
+	return y
+
+corlist = (
+    '#818485',
+    '#1a1a1a',
+    '#ff0000',
+    '#ffffff',
+)
+
+cores = []
+for c in corlist:
+    for c2 in corlist:
+        if c != c2:
+            cores.append((c, c2))
+
+var("paleta", NUMBER, 0, 0, len(cores))
+var("maxangle", NUMBER, 10, 0, 15)
+var("velocidade", NUMBER, 100, 10, 200)
+var("velocidadeRand", NUMBER, 30, 0, 100)
+
+
+background(cores[int(paleta)][0])
+stroke(cores[int(paleta)][0])
+fill(cores[int(paleta)][1])
+
+strokewidth(3)
+
+raio = 60
+x = random(raio*.5, WIDTH-raio*.5)
+y = random(raio*.5, HEIGHT-raio*.5)
+angle = 0
+
+for a in range(0,100):
+    angle += random(-maxangle, maxangle)
+    vel = random(velocidade,  velocidade + velocidadeRand)
+    x += r2x(angle, vel)
+    y += r2y(angle, vel)
+    oval(x, y, raio,raio)
