@@ -1,0 +1,14 @@
+size(600,600)
+
+def map(unscaled, from_min, from_max,to_min, to_max):
+    return (to_max-to_min)*(unscaled-from_min)/(from_max-from_min)+to_min
+
+translate(WIDTH*.5, HEIGHT * .5)
+for a in range (0,360,8):
+    w = map(a, 0, 360, 20, 2)
+    push()
+    rotate(-a + 90)
+    translate(200,0)
+    #w = 20
+    rect(0, -w*.5, 100, w)
+    pop()

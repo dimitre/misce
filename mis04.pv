@@ -6,6 +6,7 @@ corlist = (
     '#1a1a1a',
     '#818485',
     '#ff0000',
+  '#0000ff',    
 )
 
 cores = []
@@ -14,17 +15,6 @@ for c in corlist:
         if c != c2:
             cores.append((c, c2))
 
-
-# cores = (
-#     ('#1a1a1a', '#ff0000'),
-#     ('#ff0000', '#000000'),
-#     ('#ff0000', '#ffffff'),
-#     ('#ff0000', '#818485'),
-#     ('#818485', '#ff0000'),
-#     ('#818485', '#ffffff'),
-#     ('#818485', '#000000'),
-# )
-
 width = 300
 offx = 0
 offy = HEIGHT * .5 - 50
@@ -32,8 +22,8 @@ offy = HEIGHT * .5 - 50
 h = 100
 nostroke()
 
-var("sobe", NUMBER, 0.1, 0.01, 0.3)
-var("desce", NUMBER,  0.3, 0.01, 0.3)
+var("sobe", NUMBER, 0.1, 0.01, 0.6)
+var("desce", NUMBER,  0.3, 0.01, 0.6)
 var("paleta", NUMBER, 0, 0, len(cores))
 
 
@@ -86,12 +76,12 @@ for letter in texto:
 
             
         
-
-        #offx += 10
+        offx -= bounds * 1.2
+        offx += 20
     else:
         drawpath(p)
         
-        offx = offx + p.bounds.w + 20
+        offx = offx + p.bounds.w + 26
 
         
     #print(p.bounds.w)
