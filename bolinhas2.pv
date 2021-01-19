@@ -26,6 +26,7 @@ var("paleta", NUMBER, 0, 0, len(cores))
 var("maxangle", NUMBER, 10, 0, 15)
 var("velocidade", NUMBER, 100, 10, 200)
 var("velocidadeRand", NUMBER, 30, 0, 100)
+var("numero", NUMBER, 50, 0, 200)
 
 
 background(cores[int(paleta)][0])
@@ -39,7 +40,7 @@ x = random(raio*.5, WIDTH-raio*.5)
 y = random(raio*.5, HEIGHT-raio*.5)
 angle = 0
 
-for a in range(0,100):
+for a in range(0, int(numero)):
     angle += random(-maxangle, maxangle)
     vel = random(velocidade,  velocidade + velocidadeRand)
     x += r2x(angle, vel)
