@@ -1,5 +1,29 @@
-size(1280, 600)
+size(1680, 600)
 background(1)
+
+corlist = (
+    '#ffffff',
+    '#1a1a1a',
+    '#818485',
+    '#ff0000',
+)
+
+cores = []
+for c in corlist:
+    for c2 in corlist:
+        if c != c2:
+            cores.append((c, c2))
+
+
+# cores = (
+#     ('#1a1a1a', '#ff0000'),
+#     ('#ff0000', '#000000'),
+#     ('#ff0000', '#ffffff'),
+#     ('#ff0000', '#818485'),
+#     ('#818485', '#ff0000'),
+#     ('#818485', '#ffffff'),
+#     ('#818485', '#000000'),
+# )
 
 width = 300
 offx = 0
@@ -8,12 +32,19 @@ offy = HEIGHT * .5 - 50
 h = 100
 nostroke()
 
+var("sobe", NUMBER, 0.1, 0.01, 0.3)
+var("desce", NUMBER,  0.3, 0.01, 0.3)
+var("paleta", NUMBER, 0, 0, len(cores))
 
+
+
+background(cores[int(paleta)][0])
+fill(cores[int(paleta)][1])
 
 fontsize = 140    
 font(face="NONNaturalGrotesk_TrialVersion-Bold", size=fontsize)
 
-fill(1,0,0)
+#fill(1,0,0)
 texto = 'MIS'
 
 
@@ -23,8 +54,6 @@ path = textpath('MIS', 0,HEIGHT/2 + 50)
 offy = HEIGHT/2 + 50
 offx = 10
 
-var("sobe", NUMBER, 0.1, 0.01, 0.3)
-var("desce", NUMBER,  0.3, 0.01, 0.3)
 
 w = minwidth = 1
 for letter in texto:
