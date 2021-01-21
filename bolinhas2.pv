@@ -21,6 +21,8 @@ for c in corlist:
     for c2 in corlist:
         if c != c2:
             cores.append((c, c2))
+            
+            
 
 var("paleta", NUMBER, 0, 0, len(cores))
 var("maxangle", NUMBER, 10, 0, 15)

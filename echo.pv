@@ -1,0 +1,32 @@
+size(512, 512)
+background(1)
+
+corlist = (
+    '#818485',
+    '#1a1a1a',
+    '#ff0000',
+    '#ffffff',
+)
+
+cores = []
+for c in corlist:
+    for c2 in corlist:
+        if c != c2:
+            cores.append((c, c2))
+            
+            
+
+var("paleta", NUMBER, 0, 0, len(cores))
+background(cores[int(paleta)][0])
+stroke(cores[int(paleta)][0])
+stroke(cores[int(paleta)][1])
+
+
+translate(WIDTH*.5, HEIGHT*.5)
+nofill()
+
+sw =6
+for a in range (30,300,18):
+    strokewidth(sw)
+    sw -= .4
+    oval(-a*.5,-a*.5,a,a)

@@ -6,7 +6,7 @@ corlist = (
     '#1a1a1a',
     '#818485',
     '#ff0000',
-  '#0000ff',    
+#   '#0000ff',    
 )
 
 cores = []
@@ -14,6 +14,7 @@ for c in corlist:
     for c2 in corlist:
         if c != c2:
             cores.append((c, c2))
+            print (c + ' ' +c2)
 
 width = 300
 offx = 0
