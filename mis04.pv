@@ -15,6 +15,11 @@ for c in corlist:
         if c != c2:
             cores.append((c, c2))
             print (c + ' ' +c2)
+var("paleta", NUMBER, 0, 0, len(cores))
+
+background(cores[int(paleta)][0])
+fill(cores[int(paleta)][1])
+
 
 width = 300
 offx = 0
@@ -25,12 +30,9 @@ nostroke()
 
 var("sobe", NUMBER, 0.1, 0.01, 0.6)
 var("desce", NUMBER,  0.3, 0.01, 0.6)
-var("paleta", NUMBER, 0, 0, len(cores))
 
 
 
-background(cores[int(paleta)][0])
-fill(cores[int(paleta)][1])
 
 fontsize = 140    
 font(face="NONNaturalGrotesk_TrialVersion-Bold", size=fontsize)

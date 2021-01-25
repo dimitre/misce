@@ -1,0 +1,46 @@
+size(600, 600)
+
+
+corlist = (
+    '#1a1a1a',
+    '#ffffff',
+    '#818485',
+    '#ff0000',
+  '#0000ff',    
+)
+
+cores = []
+for c in corlist:
+    for c2 in corlist:
+        if c != c2:
+            cores.append((c, c2))
+            print (c + ' ' +c2)
+var("paleta", NUMBER, 0, 0, len(cores))
+var("raioMult", NUMBER, .5, 0, 3)
+var("grid", NUMBER, 1, 0, 1)
+var("mostra", NUMBER, .5, 0, 1)
+
+
+
+background(cores[int(paleta)][0])
+fill(cores[int(paleta)][1])
+stroke(cores[int(paleta)][1])
+aresta = 50
+
+raio = aresta * raioMult
+strokewidth(2)
+offset = (aresta - raio)*.5
+if grid > .5:
+    for x in range (0, WIDTH, aresta):
+        line(x, 0, x, HEIGHT)
+    for y in range (0, HEIGHT, aresta):
+        line(0, y, WIDTH, y)
+    
+    
+for x in range (0, WIDTH, aresta):
+    for y in range (0, HEIGHT, aresta):
+        if random(0,10) > mostra*10:
+            ellipse(x + offset, y + offset, raio, raio)
+    
+    
+        
