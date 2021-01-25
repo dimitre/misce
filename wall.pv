@@ -1,0 +1,77 @@
+size(600, 600)
+background(1)
+
+corlist = (
+    '#ffffff',
+    '#1a1a1a',
+    '#818485',
+    '#ff0000',
+#   '#0000ff',    
+)
+
+cores = []
+for c in corlist:
+    for c2 in corlist:
+        if c != c2:
+            cores.append((c, c2))
+            print (c + ' ' +c2)
+var("paleta", NUMBER, 0, 0, len(cores))
+
+background(cores[int(paleta)][0])
+fill(cores[int(paleta)][1])
+
+sizes = (1, 2, 4, 8)
+stroke(1,0,0)
+nostroke()
+#nofill()
+aresta = 50
+
+def remap(value, leftMin, leftMax, rightMin, rightMax):
+    # Figure out how 'wide' each range is
+    leftSpan = leftMax - leftMin
+    rightSpan = rightMax - rightMin
+
+    # Convert the left range into a 0-1 range (float)
+    valueScaled = float(value - leftMin) / float(leftSpan)
+
+    # Convert the 0-1 range into a value in the right range.
+    return rightMin + (valueScaled * rightSpan)
+
+
+def grade(x, y, w, h, invert=False):
+    push()
+    translate(x,y)
+    minwidth = 1
+    maxwidth = 10
+    for x in range(0, w, 10):
+        if invert:
+            width = remap(x, w, 0, minwidth, maxwidth)
+        else:
+            width = remap(x, 0, w, minwidth, maxwidth)
+        
+        
+        rect(x, 0, width, h)
+        width *= 1.1
+    pop()
+#     while w < bounds:
+#                 #print (w, bounds)
+#                 rect(offx, offy, w, h)
+#                 #offx += w*2
+#                 offx += bounds * 1.2
+# #                w = w*1.1
+#                 w = w*(1.0 + sobe)
+
+
+
+for y in range (0,20):
+    x = 0
+    while x < 20:
+        w = choice(sizes)
+        # fill(random(.3,1),1,.7)
+        # rect(x*aresta, y*aresta, w*aresta, aresta)
+        # fill(0)
+        grade(x*aresta, y*aresta, w*aresta, aresta, random(0,10) > 5)
+        
+        x += w
+    
+        
