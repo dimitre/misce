@@ -20,9 +20,9 @@ var("paleta", NUMBER, 0, 0, len(cores))
 background(cores[int(paleta)][0])
 fill(cores[int(paleta)][1])
 
-sizes = (1, 2, 4, 8)
+sizes = (1, 1, 1, 2, 4, 8)
 stroke(1,0,0)
-nostroke()
+# nostroke()
 #nofill()
 aresta = 50
 
@@ -67,10 +67,10 @@ for y in range (0,20):
     x = 0
     while x < 20:
         w = choice(sizes)
-        # fill(random(.3,1),1,.7)
-        # rect(x*aresta, y*aresta, w*aresta, aresta)
-        # fill(0)
-        grade(x*aresta, y*aresta, w*aresta, aresta, random(0,10) > 5)
+        fill(random(.3,1),1,.7)
+        rect(x*aresta, y*aresta, w*aresta, aresta)
+        fill(0)
+        # grade(x*aresta, y*aresta, w*aresta, aresta, random(0,10) > 5)
         
         x += w
     
