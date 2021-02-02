@@ -14,12 +14,8 @@ for c in corlist:
     for c2 in corlist:
         if c != c2:
             cores.append((c, c2))
-            # print (c + ' ' +c2)
+            print (c + ' ' +c2)
 var("paleta", NUMBER, 0, 0, len(cores))
-var("show", NUMBER, .5, 0, 1)
-var("vertical", NUMBER, 0, 0, 20)
-
-
 
 bgcolor = cores[int(paleta)][0]
 
@@ -27,8 +23,8 @@ background(bgcolor)
 color = cores[int(paleta)][1]
 fill(color)
 
-larguras = (1, 2, 4, 8, 4, 8, 16)
-alturas = (1, 1, 2)
+larguras = (1, 2, 4, 8)
+alturas = (1, 1, 2, 3)
 
 stroke(1,0,0)
 nostroke()
@@ -85,25 +81,19 @@ while y*aresta < HEIGHT:
     h = choice(alturas)
 
     while x < 20:
+        
         w = choice(larguras)
-
-        if random() * 10 > 10*show:
-            # fill(random(.3,1),1,.7)
-            # rect(x*aresta, y*aresta, w*aresta, aresta)
-            # fill(0)
-            grade(x*aresta, y*aresta, w*aresta, h*aresta, random(0,10) > 5)
+        # fill(random(.3,1),1,.7)
+        # rect(x*aresta, y*aresta, w*aresta, aresta)
+        # fill(0)
+        grade(x*aresta, y*aresta, w*aresta, h*aresta, random(0,10) > 5)
         
         x += w
     y+= h
-
-for a in range(0,int(vertical)):
+    
+for a in range(0,10):
     fill(1,0,0)
     w = h = choice(alturas)
-    w = h = choice(alturas)
-    h = choice(larguras)
-    w = choice(alturas)
-
-
     # h = choice(alturas)
     x = int(random(0,WIDTH/aresta))
     y = int(random(0,HEIGHT/aresta))
