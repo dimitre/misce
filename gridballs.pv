@@ -18,7 +18,7 @@ for c in corlist:
 var("paleta", NUMBER, 0, 0, len(cores))
 var("raioMult", NUMBER, .5, 0, 3)
 var("grid", NUMBER, 1, 0, 1)
-var("mostra", NUMBER, .5, 0, 1)
+var("mostra", NUMBER, 50, 40, 100)
 
 
 
@@ -39,7 +39,10 @@ if grid > .5:
     
 for x in range (0, WIDTH, aresta):
     for y in range (0, HEIGHT, aresta):
-        if random(0,10) > mostra*10:
+        r = random(0,100)
+        #print(r, mostra)
+        if r > mostra:
+        #if random(0,10) > mostra:
             ellipse(x + offset, y + offset, raio, raio)
     
     
